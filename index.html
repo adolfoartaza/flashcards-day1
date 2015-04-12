@@ -10,7 +10,15 @@
     </head>
     <body>
     <div ng-app="FlashCards">
-    	{{2+2}}
+   		<div class="flash-card" ng-controller="FlashCardController">
+	   		<h1> {{flashCard.question}} </h1>
+	   		<ul class="flash-card-answers">
+	   			<li class="flash-card-answer" ng-repeat="answer in flashCard.answers">
+	   				{{answer.text}}
+	   			</li>
+	   		</ul>
+   		</div>
     </div>
+
     </body>
 </html>
