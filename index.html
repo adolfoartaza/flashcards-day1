@@ -10,14 +10,14 @@
     </head>
     <body>
     <div ng-app="FlashCards" ng-controller="MainController">
-   		<div class="flash-card" ng-controller="FlashCardController" ng-repeat="fC in flashCards">
-	   		<h1> {{fC.question}} </h1>
+   		<div class="flash-card" ng-controller="FlashCardController" ng-repeat="fC in flashCards | orderBy:'question'">
+	   		<h1> {{fC.question | uppercase}} </h1>
 	   		<ul class="flash-card-answers">
 	   			<li class="flash-card-answer" ng-repeat="answer in fC.answers" ng-click="answerQuestion(answer)">
 	   				{{answer.text}}
 	   			</li>
 	   		</ul>
-	   		<h2 class="answer-feedback" ng-show="answered">
+	   		<h2 class="answer-feedback" ng-show="answered" ng-class="{ correct: answeredCorrectly === true, incorrect: answeredCorrectly === false }">
 			    <span ng-show="answeredCorrectly">Yeah, you got it right!</span>
 			    <span ng-show="!answeredCorrectly">Nope, you got it wrong.</span>
 			</h2>
